@@ -195,7 +195,7 @@ EMAIL_HOST_USER = 'yashsoni0106@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'soni@0644'
+EMAIL_HOST_PASSWORD = ''
 
 AUTH_USER_MODEL ='blog.User'
 
