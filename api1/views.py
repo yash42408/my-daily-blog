@@ -256,7 +256,7 @@ class ViewPageViewSet(viewsets.ViewSet):
 
 class MyPageViewSet(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
-    def get(self,request,format=None):
+    def list(self,request):
         offset = request.data.get('offset')
         limit = 3
         newoffset = offset+limit
