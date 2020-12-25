@@ -1,0 +1,33 @@
+
+{% extends 'menu.html'%}
+
+{% block title%}
+  
+    Edit Post
+{% endblock%}
+{% block content %}
+
+{% if user.is_authenticated and user.is_blogger%}
+     {% if user.id == post.blogger.id %}
+            <h1>Update Post</h1>
+            <br/>
+
+            <div class="w-75 p-3">
+            <div class="form-group">
+            <form method="POST">
+            {% csrf_token %}
+            {{form.media}}
+            {{form.as_p}}
+            <button  class="btn btn-secondary">Update</button>
+            <a href="{% url 'mypost' user.id%}" class="btn btn-secondary">back</a>
+            </form>
+            </div>
+            </div>
+      {% else %}
+          <h1>You're Not Authorized To Edit this Post</h1>
+      {% endif %}
+{% else %}
+<h1>You are Not Allowed</h1>
+{% endif %}
+
+{% endblock %}

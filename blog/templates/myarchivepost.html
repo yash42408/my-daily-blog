@@ -1,0 +1,68 @@
+
+{% extends 'menu.html'%}
+
+{% block title%}
+    Greeting of the day!
+{% endblock%}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.is_blogger %}
+<h1>Post</h1>
+<hr>
+<br/>
+<ul class="list-group">
+{% for post in page_obj %}
+{% if post.is_archive %}
+<li class="list-group-item">
+ <a href="{% url 'articledetail' post.pk %}">{{post.title}}</a>
+ by:{{post.blogger}} --date : {{post.post_date}}
+ <br/>
+ {{post.body | slice:":200" |safe}}
+ <br/>
+</li>
+{% endif %}
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</ul>
+{% else %}
+<h1>Post</h1>
+<hr>
+<br/>
+<ul class="list-group">
+{% for post in object_list %}
+
+<li class="list-group-item">
+ <a href="{% url 'articledetail' post.pk %}">{{post.title}}</a>
+ by: {{user.username}}
+ <br/>
+ {{post.body | slice:":200"}}
+ <br/>
+ 
+ <a href="#" class="btn btn-secondary">Like</a>
+ <a href="#" class="btn btn-secondary">Comment</a>
+</li>
+
+{% endfor %}
+</ul>
+{% endif %}
+{% else %}
+{% include 'login.html' %}
+{% endif %}
+{% endblock %}

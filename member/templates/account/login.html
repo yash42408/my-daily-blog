@@ -1,0 +1,48 @@
+{% extends 'menu.html' %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+		
+<link rel="stylesheet"href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+integrity= "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'member/style1.css' %}">
+
+</head> 
+<body>
+<br> 
+	<br/> 
+	<br/> 
+<div class="container" > 
+	<div class="row">
+     <div class="col-md-3"> 
+					
+		</div>  			
+		<div class="col-md-6 main"> 
+    		
+<form class="login" method="POST" action="{% url 'account_login' %}">
+   {% if form.errors%}
+        <p>username and password not correct please try again </p>
+    
+  {% endif %}
+  {% csrf_token %}
+	<h1>Login Here</h1> 
+  <input class="box" type="text" name="login" placeholder="Username" id="id_login" maxlength="150" required autocomplete="username"/>
+  <input class="box" type="password" name="password" placeholder="Password" id="id_password" required autocomplete="current-password"/>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  <a href="{% url 'account_signup' %}"><h3>Signup Here</h3></a>
+</form>
+</div>
+</div>
+</div>
+
+</body>
+{% endblock %}

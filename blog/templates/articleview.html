@@ -1,0 +1,88 @@
+ {% extends 'menu.html'%}
+{% block title%}
+
+    
+   {{post.title_tag}}
+
+{% endblock%}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.is_blogger and user.id == post.blogger.id%}
+
+<h1>{{ post.title }}</h1>
+<bold>By: {{post.blogger}}
+ {{post.author.last_name}} .{{post.post_date}} .<br/> </bold>
+<hr>
+<br/>
+{{post.body |safe}}
+<br/>
+<br/>
+<h2>Comments...</h2>
+{% if not post.comments.all %}
+No Comment Yet...
+{% else %}
+
+{% for comment in post.comments.all %}
+
+<li id="comment{{comment.id}}">
+{{comment.comment_content}}--by:-{{comment.user}}--Date : {{comment.comment_date}} <br/>
+ <a href="#" class="remove_comment btn btn-secondary" data-commentId="{{comment.id}}">Delete</a>
+
+</li>
+{% endfor %}
+{% endif %}
+{% else %}
+<h1>{{ post.title }}</h1>
+<bold>By: {{post.blogger}}
+ {{post.author.last_name}} .{{post.post_date}} .<br/> </bold>
+<hr>
+<br/>
+{{post.body |safe}}
+<br/>
+<br/>
+<h2>Comments...</h2>
+{% if not post.comments.all %}
+No Comment Yet...
+{% else %}
+
+{% for comment in post.comments.all  %}
+
+<li>
+{{comment.comment_content}}--by:-{{comment.user}}--Date : {{comment.comment_date}} 
+
+</li>
+{% endfor %}
+{% endif %}
+{% endif %}
+   <a href="{% url 'home'%}" class="btn btn-secondary">back</a>
+{% else %}
+<h1>You're Not Allowed Here</h1>
+{% endif %}
+{% endblock %}
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+   $(document).on('click','.remove_comment',function(e){
+    let confirmation = confirm("are you sure you want to remove the item?");
+    e.preventDefault();
+    var commentId;
+    commentId = $(this).attr("data-commentId");  
+    if(confirmation){
+     $.ajax({
+       url:"{% url 'removecomment' %}",
+       type:"GET",
+       data:{
+           comment_id: commentId,
+       },
+       success:function(){   
+        $("#comment"+commentId).remove();
+       }
+     });
+    }
+   });
+
+//});
+
+</script>  
+{% endblock javascript %}

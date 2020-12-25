@@ -1,0 +1,830 @@
+{% extends 'menu.html' %}
+{% block title%}
+  Greeting of the day!
+{% endblock%}
+{% block mystyle %}
+<style>
+    input.transparent-input{
+      background-color:rgba(0,0,0,0) !important;
+      border:none !important;
+    }
+</style>
+{% endblock mystyle %}
+
+{% block content %}
+{% comment %} {% if user.is_authenticated %} {% endcomment %}
+<br/><br/>
+<h1 class="text-center">Most Recent Post</h1>
+<div class="recent row">
+ {% for recent_post in most_recent_post %}
+  <div class="mostrecent col-md-4">
+    <div class="card border mb-3">-
+      <div class="card-body">
+      <div class="card-header">
+        <a href="{% url 'articledetail' recent_post.id %}"><h5 class="card-title"><i>{{recent_post.title}}</i></h5></a>
+        By:{{recent_post.blogger}}-Date : {{recent_post.post_date|date:'d-m-Y'}}
+      </div>
+        <p class="card-text">{{recent_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' recent_post.id %}" > continue...</a></p>
+        <b class="output{{recent_post.id}}">{{recent_post.total_likes}}</b> Likes -- <b>{{recent_post.post_view}}</b> Views&nbsp
+        <a href="#" class="likebutton btn btn-primary" data-catid="{{recent_post.id}}">&nbspLike</a>
+        <br/>
+
+        <div class="card-footer bg-transparent">
+        <form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{recent_post.id}}" >
+         {% csrf_token %}
+         <input class="form-control transparent-input"  id="content{{recent_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp  
+          <a href="{% url 'articledetail' recent_post.id %}" class="btn btn-secondary">View All Comment</a>    
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+<br/></br/>
+
+{% if is_more_data %}
+<div class="mypage">
+   <p class="text-center">
+      <button  class="btn btn-dark" id="previous" disabled>&#8249;</button>
+      <button  class="btn btn-dark" id="next">&#8250;</button>
+   </p>
+</div>
+{% endif %}
+<hr> 
+<h1 class="text-center">Most Likes Post</h1>
+<div class="like row">
+{% for like_post in most_likes_post  %}
+  <div class="mostlike col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-header">
+        <a href="{% url 'articledetail' like_post.id %}"><h5 class="card-title"><i>{{like_post.title}}</i></h5></a>
+        </div>
+          <p class="card-text">{{like_post.body|safe|truncatewords:"25"}} <a href="#" > continue...</a></p>
+          <b class="output{{like_post.id}}">{{like_post.total_likes}}</b> Likes -- <b>{{like_post.post_view}}</b> Views&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{like_post.id}}">&nbspLike</a>
+        <br>
+      <div class="card-footer bg-transparent">
+        <form class="commentform1 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{like_post.id}}" >
+         {% csrf_token %}
+         <input class="form-control transparent-input" id="content1{{like_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp  
+          <a href="{% url 'articledetail' like_post.id %}" class="btn btn-secondary">View All Comment</a>    
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+<br/></br>
+{% if is_more_data %}
+<div class="mypage">
+   <p class="text-center">
+      <button  class="btn btn-dark" id="previous-like" disabled>&#8249;</button>
+      <button  class="btn btn-dark" id="next-like">&#8250;</button>
+   </p>
+</div>
+{% endif %}
+<hr> 
+<h1 class="text-center">Most Views Post</h1>
+<div class="view row">
+ {% for view_post in most_views_post %}
+  <div class="mostview col-md-4">
+    <div class="card border mb-3">
+      <div class="card-body">
+      <div class="card-header">
+        <a href="{% url 'articledetail' view_post.id %}"><h5 class="card-title"><i>{{view_post.title}}</i></h5></a>
+        By:{{view_post.blogger}}-Date : {{view_post.post_date|date:'d-m-Y'}}
+      </div>
+        <p class="card-text">{{view_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' view_post.id %}" > continue...</a></p>
+        <b class="output{{view_post.id}}">{{view_post.total_likes}}</b> Likes -- <b>{{view_post.post_view}}</b> Views&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{view_post.id}}">&nbspLike</a>
+        <br/>
+
+        <div class="card-footer bg-transparent">
+        <form class="commentform2 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{view_post.id}}" >
+         {% csrf_token %}
+         <input class="form-control transparent-input"  id="content2{{view_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp  
+          <a href="{% url 'articledetail' view_post.id %}" class="btn btn-secondary">View All Comment</a>    
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+<br/></br/>
+{% if is_more_data %}
+<div class="mypage">
+   <p class="text-center">
+      <button  class="btn btn-dark" id="previous-view" disabled>&#8249;</button>
+      <button  class="btn btn-dark" id="next-view">&#8250;</button>
+   </p>
+</div>
+{% endif %}
+<hr> 
+{% comment %} {% else %} {% endcomment %}
+{% comment %} {% include 'account/login.html' %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+{% endblock %}
+
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+localStorage.setItem("totalpost",3)
+localStorage.setItem("liketotalpost",3)
+localStorage.setItem("viewtotalpost",3)
+var yash =12
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  // e.preventDefault();
+    //console.log(yash);
+   $("#next").on('click',function(){
+      var _currentResult =localStorage.getItem("totalpost")
+     $.ajax({
+       url:"{% url 'recentloadpage' %}",
+       type:"GET",
+       data:{
+           'offset':_currentResult,
+       },
+       dataType:'json',
+       beforeSend:function(){
+         $('#previous').attr("disabled", false);
+       },
+       success:function(response){
+            var _html='';
+            console.log(response.posts);
+            var json_data =$.parseJSON(response.posts);
+            var user_data = $.parseJSON(response.users);
+            $.each(json_data,function(index,data){
+            $.each(user_data,function(index,user_data){
+            if(data.fields.blogger==user_data.pk)
+            {
+               _html+='<div class="mostrecent col-md-4">'+
+              '<div class="card border mb-3">'+
+              '<div class="card-body">'+
+               '<div class="card-header">'+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               '</div>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <br>'+
+               '<div class="card-footer bg-transparent">'+
+              '<form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+              ' {% csrf_token %}'+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">View All Comment</a>  '+  
+              ' </form>'+
+              '</div>'+
+              '</div>'+
+              '</div>'+
+              '</div>'         
+             ;
+            }
+            });
+            });
+            $('.mostrecent').remove();
+          
+            $('.recent').append(_html);
+            
+            if(Number(_currentResult)+response.newoffset==response.totalResult){
+              $("#next").attr("disabled", true);
+            }
+            else{
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+            }
+            localStorage.setItem('totalpost',Number(_currentResult)+response.newoffset);
+
+       }
+     });
+ 
+   });
+
+});
+</script> 
+<script type="text/javascript">
+$(document).ready(function(){
+  // e.preventDefault();
+    
+   $("#previous").on('click',function(){
+      var currentpost = $(".mostrecent").length;
+      console.log(currentpost);
+      var newtotalpost=Number(localStorage.getItem("totalpost"))-currentpost;
+      var _currentResult =newtotalpost-3
+     $.ajax({
+       url:"{% url 'recentloadpage' %}",
+       type:"GET",
+       data:{
+           'offset':_currentResult,
+       },
+       dataType:'json',
+       beforeSend:function(){
+        $("#next").attr("disabled", false);
+
+       },
+       success:function(response){
+            var _html='';
+            console.log(response.posts);
+            var json_data =$.parseJSON(response.posts);
+            var user_data = $.parseJSON(response.users);
+            $.each(json_data,function(index,data){
+            $.each(user_data,function(index,user_data){
+            if(data.fields.blogger==user_data.pk)
+            {
+                _html+='<div class="mostrecent col-md-4">'+
+              '<div class="card border mb-3">'+
+              '<div class="card-body">'+
+               '<div class="card-header">'+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               '</div>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <br>'+
+               '<div class="card-footer bg-transparent">'+
+              '<form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+              ' {% csrf_token %}'+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' </form>'+
+              '</div>'+
+              '</div>'+
+              '</div>'+
+              '</div>'         
+             ;
+            }
+            });
+            });
+            $('.mostrecent').remove();
+            $('.recent').append(_html);
+            
+            if(newtotalpost==3){
+              $("#previous").attr("disabled", true);
+            }
+            else{
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+            }
+          localStorage.setItem("totalpost",newtotalpost);
+
+
+       }
+     });
+ 
+   });
+
+});
+</script> 
+{% comment %} next for views {% endcomment %}
+<script type="text/javascript">
+$(document).ready(function(){
+  // e.preventDefault();
+    
+   $("#next-like").on('click',function(){
+      var _currentResult =localStorage.getItem("liketotalpost")
+     $.ajax({
+       url:"{% url 'likeloadpage' %}",
+       type:"GET",
+       data:{
+           'offset':_currentResult,
+       },
+       dataType:'json',
+       beforeSend:function(){
+         $('#previous-like').attr("disabled", false);
+       },
+       success:function(response){
+            var _html='';
+            console.log(response.posts);
+            var json_data =$.parseJSON(response.posts);
+            var user_data = $.parseJSON(response.users);
+            $.each(json_data,function(index,data){
+            $.each(user_data,function(index,user_data){
+            if(data.fields.blogger==user_data.pk)
+            {
+               _html+='<div class="mostlike col-md-4">'+
+              '<div class="card border mb-3">'+
+              '<div class="card-body">'+
+               '<div class="card-header">'+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               '</div>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <br>'+
+               '<div class="card-footer bg-transparent">'+
+              '<form class="commentform1 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+              ' {% csrf_token %}'+
+              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' </form>'+
+              '</div>'+
+              '</div>'+
+              '</div>'+
+              '</div>'         
+             ;
+            }
+            });
+            });
+            $('.mostlike').remove();
+          
+            $('.like').append(_html);
+            
+            if(Number(_currentResult)+response.newoffset==response.totalResult){
+              $("#next-like").attr("disabled", true);
+            }
+            else{
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+            }
+            localStorage.setItem('liketotalpost',Number(_currentResult)+response.newoffset);
+
+       }
+     });
+ 
+   });
+
+});
+</script> 
+{% comment %} previous for likes {% endcomment %}
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  // e.preventDefault();
+   $("#previous-like").on('click',function(){
+      var currentpost = $(".mostlike").length;
+
+      console.log(currentpost);
+
+      var newtotalpost=Number(localStorage.getItem("liketotalpost"))-currentpost;
+
+      var _currentResult =newtotalpost-3
+
+     $.ajax({
+
+       url:"{% url 'likeloadpage' %}",
+
+       type:"GET",
+
+       data:{
+
+           'offset':_currentResult,
+
+       },
+
+       dataType:'json',
+
+       beforeSend:function(){
+
+        $("#next-like").attr("disabled", false);
+
+
+
+       },
+
+       success:function(response){
+
+            var _html='';
+
+            console.log(response.posts);
+
+            var json_data =$.parseJSON(response.posts);
+
+            var user_data = $.parseJSON(response.users);
+
+            $.each(json_data,function(index,data){
+
+            $.each(user_data,function(index,user_data){
+
+            if(data.fields.blogger==user_data.pk)
+
+            {
+
+                _html+='<div class="mostlike col-md-4">'+
+
+              '<div class="card border mb-3">'+
+
+              '<div class="card-body">'+
+
+               '<div class="card-header">'+
+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+
+               '</div>'+
+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+
+               ' <br>'+
+
+               '<div class="card-footer bg-transparent">'+
+
+              '<form class="commentform1 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+
+              ' {% csrf_token %}'+
+
+              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+
+
+              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">View All Comment</a>  '+  
+
+              ' </form>'+
+
+              '</div>'+
+
+              '</div>'+
+
+              '</div>'+
+
+              '</div>'         
+
+             ;
+
+            }
+
+            });
+
+            });
+
+            $('.mostlike').remove();
+
+            $('.like').append(_html);
+
+            
+
+            if(newtotalpost==3){
+
+              $("#previous-like").attr("disabled", true);
+
+            }
+
+            else{
+
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+
+            }
+
+          localStorage.setItem("liketotalpost",newtotalpost);
+
+       }
+
+     });
+   });
+});
+
+</script> 
+{% comment %} next for view post {% endcomment %}
+<script type="text/javascript">
+$(document).ready(function(){
+  // e.preventDefault();
+    
+   $("#next-view").on('click',function(){
+      var _currentResult =localStorage.getItem("viewtotalpost")
+     $.ajax({
+       url:"{% url 'viewloadpage' %}",
+       type:"GET",
+       data:{
+           'offset':_currentResult,
+       },
+       dataType:'json',
+       beforeSend:function(){
+         $('#previous-view').attr("disabled", false);
+       },
+       success:function(response){
+            var _html='';
+            console.log(response.posts);
+            var json_data =$.parseJSON(response.posts);
+            var user_data = $.parseJSON(response.users);
+            $.each(json_data,function(index,data){
+            $.each(user_data,function(index,user_data){
+            if(data.fields.blogger==user_data.pk)
+            {
+               _html+='<div class="mostview col-md-4">'+
+              '<div class="card border mb-3">'+
+              '<div class="card-body">'+
+               '<div class="card-header">'+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               '</div>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <br>'+
+               '<div class="card-footer bg-transparent">'+
+              '<form class="commentform2 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+              ' {% csrf_token %}'+
+              '<input class="form-control transparent-input" id="content2'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' </form>'+
+              '</div>'+
+              '</div>'+
+              '</div>'+
+              '</div>'         
+             ;
+            }
+            });
+            });
+            $('.mostview').remove();
+          
+            $('.view').append(_html);
+            
+            if(Number(_currentResult)+response.newoffset==response.totalResult){
+              $("#next-view").attr("disabled", true);
+            }
+            else{
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+            }
+            localStorage.setItem('viewtotalpost',Number(_currentResult)+response.newoffset);
+
+       }
+     });
+ 
+   });
+
+});
+</script> 
+{% comment %} previous for likes {% endcomment %}
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  // e.preventDefault();
+   $("#previous-view").on('click',function(){
+
+      var currentpost = $(".mostview").length;
+
+      console.log(currentpost);
+
+      var newtotalpost=Number(localStorage.getItem("viewtotalpost"))-currentpost;
+
+      var _currentResult =newtotalpost-3
+
+     $.ajax({
+
+       url:"{% url 'viewloadpage' %}",
+
+       type:"GET",
+
+       data:{
+
+           'offset':_currentResult,
+
+       },
+
+       dataType:'json',
+
+       beforeSend:function(){
+
+        $("#next-view").attr("disabled", false);
+
+
+
+       },
+
+       success:function(response){
+
+            var _html='';
+
+            console.log(response.posts);
+
+            var json_data =$.parseJSON(response.posts);
+
+            var user_data = $.parseJSON(response.users);
+
+            $.each(json_data,function(index,data){
+
+            $.each(user_data,function(index,user_data){
+
+            if(data.fields.blogger==user_data.pk)
+
+            {
+
+                _html+='<div class="mostview col-md-4">'+
+
+              '<div class="card border mb-3">'+
+
+              '<div class="card-body">'+
+
+               '<div class="card-header">'+
+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+
+               '</div>'+
+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+
+               ' <br>'+
+
+               '<div class="card-footer bg-transparent">'+
+
+              '<form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
+
+              ' {% csrf_token %}'+
+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+
+
+
+              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+
+              ' </form>'+
+
+              '</div>'+
+
+              '</div>'+
+
+              '</div>'+
+
+              '</div>'         
+
+             ;
+
+            }
+
+            });
+
+            });
+
+            $('.mostview').remove();
+
+            $('.view').append(_html);
+
+            
+
+            if(newtotalpost==3){
+
+              $("#previous-view").attr("disabled", true);
+
+            }
+
+            else{
+
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+
+            }
+
+          localStorage.setItem("viewtotalpost",newtotalpost);
+
+       }
+
+     });
+   });
+});
+
+</script> 
+
+<script type="text/javascript">
+    $(document).on('submit','.commentform',function(e){
+       e.preventDefault();
+       var postid;
+       postid = $(this).attr("data-postid");  
+        var userid = {{request.user.id}}
+        if ($('#content'+postid).val()=="")
+        {
+          alert("Please Type something on comment box");
+        }
+        else{
+       $.ajax({
+           type:'POST',
+           url:"{% url 'addcomment' %}",
+           data:{
+               content:$('#content'+postid).val(),
+               post_id :postid,
+               user_id :userid,
+               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+           },
+           success:function(response){
+             if(response.status==200)
+             {
+              alert(response.data);
+              $('#show_list'+postid).append(' <b>*</b>-'+response.content+'--by:-'+response.username+'Date:-'+response.date+'</br>')
+             }
+             //else{
+              // alert("something wan't wrong");
+            // }
+
+           }
+       });
+      }
+    });
+</script>
+
+<script type="text/javascript">
+
+   $(document).on('click','.likebutton',function(e){
+    
+    e.preventDefault();
+    var postid;
+    postid = $(this).attr("data-catid");
+     $.ajax({
+       url:"{% url 'like_post' %}",
+       type:"GET",
+       data:{
+           post_id: postid
+       },
+       success:function(response){
+            if(response.data=='unsuccess'){
+              alert('Please Login For Like and Comment');
+            }   
+            else{
+            $('.output'+postid).html(response.data);
+            }
+       }
+     });
+     
+   });
+
+//});
+
+</script> 
+<script type="text/javascript">
+    $(document).on('submit','.commentform1',function(e){
+       e.preventDefault();
+       var postid;
+       postid = $(this).attr("data-postid");  
+        var userid = {{request.user.id}}
+        if ($('#content1'+postid).val()=="")
+        {
+          alert("Please Type something on comment box");
+        }
+        else{
+       $.ajax({
+           type:'POST',
+           url:"{% url 'addcomment' %}",
+           data:{
+               content:$('#content1'+postid).val(),
+               post_id :postid,
+               user_id :userid,
+               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+           },
+           success:function(response){
+             if(response.status==200)
+             {
+              alert(response.data);
+              $('#show_list'+postid).append(' <b>*</b>-'+response.content+'--by:-'+response.username+'Date:-'+response.date+'</br>')
+             }
+             //else{
+              // alert("something wan't wrong");
+            // }
+
+           }
+       });
+      }
+    });
+</script>
+<script type="text/javascript">
+    $(document).on('submit','.commentform2',function(e){
+      console.log("like comment");
+       e.preventDefault();
+       var postid;
+       postid = $(this).attr("data-postid");  
+        var userid = {{request.user.id}}
+        if ($('#content2'+postid).val()=="")
+        {
+          alert("Please Type something on comment box");
+        }
+        else{
+       $.ajax({
+           type:'POST',
+           url:"{% url 'addcomment' %}",
+           data:{
+               content:$('#content2'+postid).val(),
+               post_id :postid,
+               user_id :userid,
+               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+           },
+           success:function(response){
+             if(response.status==200)
+             {
+              alert(response.data);
+              $('#show_list'+postid).append(' <b>*</b>-'+response.content+'--by:-'+response.username+'Date:-'+response.date+'</br>')
+             }
+             //else{
+              // alert("something wan't wrong");
+            // }
+
+           }
+       });
+      }
+    });
+</script>
+
+{% endblock javascript %}

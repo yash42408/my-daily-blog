@@ -1,0 +1,261 @@
+
+{% extends 'menu.html'%}
+
+{% block title%}
+    Greeting of the day!
+{% endblock%}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.is_blogger %}
+<h1>Post</h1>
+<hr>
+<br/>
+<ul class="list-group">
+{% for post in page_obj %}
+{% if not post.is_archive %}
+<div class="appendData">
+<div class="postdata{{post.id}}">
+<li class="list-group-item">
+ <a href="{% url 'articledetail' post.pk %}">{{post.title}}</a>
+ by:{{post.blogger}} --date : {{post.post_date}}
+ <br/>
+ {{post.body | safe}}
+ <br/>
+ <a href="#" class="deletebutton btn btn-secondary" id="delete{{post.pk}}" data-postid="{{post.pk}}">Delete</a>
+ <a href={% url 'update_post' post.pk %} class="btn btn-secondary">Update</a>
+ <a href={% url 'archive-post' post.id %} class="btn btn-secondary">Archive</a>
+ {% if post.status == "Publish" %}
+ <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus btn btn-secondary">Unpublish</a>
+ {% else %}
+  <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus1 btn btn-secondary">Publish</a>
+ {% endif %}
+</li>
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+</ul>
+{% endif %}
+{% else %}
+{% include 'login.html' %}
+{% endif %}
+{% if is_more_data %}
+<div class="mypage">
+   <p class="text-center">
+      <button  class="btn btn-dark" id="loadmorebtn">Load More</button>
+   </p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).on('submit','.commentform',function(e){
+       e.preventDefault();
+       var postid;
+       postid = $(this).attr("data-postid");  
+        var userid = {{request.user.id}}
+        if ($('#content'+postid).val()=="")
+        {
+          alert("Please Type something on comment box");
+        }
+        else{
+       $.ajax({
+           type:'POST',
+           url:"{% url 'addcomment' %}",
+           data:{
+               content:$('#content'+postid).val(),
+               post_id :postid,
+               user_id :userid,
+               csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+           },
+           success:function(response){
+             if(response.status==200)
+             {
+              alert(response.data);
+              $('#show_list'+postid).append(' <b>*</b>-'+response.content+'--by:-'+response.username+'Date:-'+response.date+'</br>')
+             }
+             //else{
+              // alert("something wan't wrong");
+            // }
+
+           }
+       });
+      }
+    });
+</script>
+
+<script type="text/javascript">
+
+   $(document).on('click','.likebutton',function(e){
+    e.preventDefault();
+    console.log("like button click");
+    var postid;
+    postid = $(this).attr("data-catid");  
+     $.ajax({
+       url:"{% url 'like_post' %}",
+       type:"GET",
+       data:{
+           post_id: postid
+       },
+       success:function(response){   
+            $('#output'+postid).html(response.data);
+       }
+     });
+ 
+   });
+
+//});
+
+</script>  
+<script type="text/javascript">
+
+   $(document).on('click','.deletebutton',function(e){
+    let confirmation = confirm("are you sure you want to remove the item?");
+    e.preventDefault();
+    var postid;
+    postid = $(this).attr("data-postid");  
+    if(confirmation){
+     $.ajax({
+       url:"{% url 'delete_post'%}",
+       type:"GET",
+       data:{
+           post_id: postid,
+       },
+       success:function(response){   
+        $(".postdata"+postid).remove();
+       }
+     });
+    }
+   });
+
+//});
+
+</script>  
+<script type="text/javascript">
+$(document).ready(function(){
+  // e.preventDefault();
+    
+   $("#loadmorebtn").on('click',function(){
+      //e.preventDefault();
+      var _currentResult = $('.appendData').length;
+     $.ajax({
+       url:"{% url 'my-load-page' %}",
+       type:"GET",
+       data:{
+           'offset':_currentResult,
+       },
+       dataType:'json',
+       beforeSend:function(){
+         $('#loadmorebtn').addClass('disabled').text('Loading...');
+       },
+       success:function(response){
+            var _html='';
+            var json_data =$.parseJSON(response.posts);
+            var user_data = $.parseJSON(response.users);
+            $.each(json_data,function(index,data){
+            $.each(user_data,function(index,user_data){
+            if(data.fields.blogger==user_data.pk)
+            {
+               if(data.fields.status=='Publish'){
+
+               _html+='<div class="appendData"><div class="postdata'+data.pk+'"><li class=list-group-item><a href="/blog/post/'+data.pk+'">'+data.fields.title
+               +'</a>'+'by :'+user_data.fields.username+'  Date:'+data.fields.post_date+'<br/>'+'<p>'+data.fields.body+'</p><br/><br/>'+
+               '<a href="#" class="deletebutton btn btn-secondary" id="delete'+data.pk+'" data-postid='+data.pk+'>Delete</a>'+'&nbsp'+
+               '<a href="/blog/updatepost/edit/'+data.pk+'" class="btn btn-secondary">Update</a>'+'&nbsp'+
+               '<a href="/blog/post/mypost/archivepost/'+data.pk+'" class="btn btn-secondary">Archive</a>'+'&nbsp'+
+               ' <a href="#" data-postid='+data.pk+' id="status'+data.pk+'" class="poststatus btn btn-secondary">Unpublish</a>'
+               '</li></div></div>';
+               }
+               else{
+                 html+='<div class="appendData"><div class="postdata'+data.pk+'"><li class=list-group-item><a href="/blog/post/'+data.pk+'">'+data.fields.title
+               +'</a>'+'by :'+user_data.fields.username+'  Date:'+data.fields.post_date+'<br/>'+'<p>'+data.fields.body+'</p><br/><br/>'+
+               '<a href="#" class="deletebutton btn btn-secondary" id="delete'+data.pk+'" data-postid='+data.pk+'>Delete</a>'+'&nbsp'+
+               '<a href="/blog/updatepost/edit/'+data.pk+'" class="btn btn-secondary">Update</a>'+'&nbsp'+
+               '<a href="/blog/post/mypost/archivepost/'+data.pk+'" class="btn btn-secondary">Archive</a>'+'&nbsp'+
+               '<a href="#" data-postid='+data.pk+' id="status'+data.pk+'" class="poststatus1 btn btn-secondary">Publish</a>'
+
+               '</li></div></div>';
+
+               }
+            }
+            });
+            });
+            $('.list-group').append(_html);
+            var countTotal = $(".appendData").length;
+            console.log(countTotal)
+            console.log(response.totalResult);
+            if(countTotal==response.totalResult){
+              $("#loadmorebtn").remove();
+            }
+            else{
+              $("#loadmorebtn").removeClass('disabled').text('Continue...');
+            }
+       }
+     });
+ 
+   });
+
+});
+</script> 
+<script type="text/javascript">
+
+   $(document).on('click','.poststatus',function(e){
+    let confirmation = confirm("are you sure you want to Unpublish the item?");
+    e.preventDefault();
+    var postid;
+    postid = $(this).attr("data-postid");  
+    if(confirmation){
+     $.ajax({
+       url:"{% url 'unpublish-post' %}",
+       type:"GET",
+       data:{
+           post_id: postid,
+       },
+       success:function(response){  
+         alert("unpublish success");
+         $("#status"+postid).removeClass("poststatus")
+         $("#status"+postid).addClass("poststatus1").text("Publish");
+         
+       }
+     });
+    }
+   });
+
+//});
+
+</script>  
+<script type="text/javascript">
+
+   $(document).on('click','.poststatus1',function(e){
+    let confirmation = confirm("are you sure you want to publish the item?");
+    e.preventDefault();
+    var postid;
+    postid = $(this).attr("data-postid");  
+    if(confirmation){
+     $.ajax({
+       url:"{% url 'publishpost' %}",
+       type:"GET",
+       data:{
+           post_id: postid,
+       },
+       success:function(response){  
+          alert("publish success");
+         $("#status"+postid).removeClass("poststatus1");
+         $("#status"+postid).addClass("poststatus").text("UnPublish");
+         
+       }
+     });
+    }
+   });
+
+//});
+
+</script>  
+
+{% endblock javascript %}

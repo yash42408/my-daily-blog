@@ -1,0 +1,34 @@
+
+
+{% extends 'menu.html'%}
+
+{% block title%}
+  
+    Add Comment
+{% endblock%}
+
+
+{% block content %}
+ 
+{% if user.is_authenticated %}
+
+        <h1><i>Add Comment</i></h1>
+        <br/>
+        <div class="w-75 p-3">
+        <div class="form-group">
+        <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button  class="btn btn-secondary">Submit</button>
+        <a href="{% url 'home'%}" class="btn btn-secondary">back</a>
+        </form>
+        </div>
+        <script>
+         var name = "{{user.id}}";
+         document.getElementById("user").value=name;
+        </script>
+        </div>
+{% else%}
+<h1>You are Not allowed</h1>
+{% endif %}
+{% endblock %}

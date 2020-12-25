@@ -1,0 +1,21 @@
+{% extends 'menu.html' %}
+{% block content%}
+{% if user.is_authenticated %}
+<h1>My profile</h1>
+<h3>Username:{{user.username}}</h3>
+<h3>Email:{{user.email}}</h3>
+{% if user.is_blogger %}
+<h3>Request For Blogger:<button type="button" class="btn btn-success">Approved</button></h3>
+<i class="fa fa-check-circle-o available-icon"></i>
+
+
+{% else %}
+{% if not user.is_request %}
+<h3>Reuest For Blogger:<a class="btn btn-primary" href="{% url 'approve-request' user.id %}">Request</a></h3>
+{% else %}
+
+<h3>Reuest For Blogger:<a class="btn btn-secondary" href="#">Sent</a></h3>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}
