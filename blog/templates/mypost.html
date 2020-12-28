@@ -1,6 +1,6 @@
 
 {% extends 'menu.html'%}
-
+{% load i18n %}
 {% block title%}
     Greeting of the day!
 {% endblock%}
@@ -22,13 +22,13 @@
  <br/>
  {{post.body | safe}}
  <br/>
- <a href="#" class="deletebutton btn btn-secondary" id="delete{{post.pk}}" data-postid="{{post.pk}}">Delete</a>
- <a href={% url 'update_post' post.pk %} class="btn btn-secondary">Update</a>
- <a href={% url 'archive-post' post.id %} class="btn btn-secondary">Archive</a>
+ <a href="#" class="deletebutton btn btn-secondary" id="delete{{post.pk}}" data-postid="{{post.pk}}">{% trans "Delete" %}</a>
+ <a href={% url 'update_post' post.pk %} class="btn btn-secondary">{% trans "Update" %}</a>
+ <a href={% url 'archive-post' post.id %} class="btn btn-secondary">{% trans "Archive" %}</a>
  {% if post.status == "Publish" %}
- <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus btn btn-secondary">Unpublish</a>
+ <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus btn btn-secondary">{% trans "Unpublish" %}</a>
  {% else %}
-  <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus1 btn btn-secondary">Publish</a>
+  <a href="#" data-postid="{{post.pk}}" id="status{{post.pk}}" class="poststatus1 btn btn-secondary">{% trans "Publish" %}</a>
  {% endif %}
 </li>
 </div>
@@ -44,7 +44,7 @@
 {% if is_more_data %}
 <div class="mypage">
    <p class="text-center">
-      <button  class="btn btn-dark" id="loadmorebtn">Load More</button>
+      <button  class="btn btn-dark" id="loadmorebtn">{% trans "Load More" %}</button>
    </p>
 </div>
 {% endif %}
@@ -173,7 +173,7 @@ $(document).ready(function(){
                '</li></div></div>';
                }
                else{
-                 html+='<div class="appendData"><div class="postdata'+data.pk+'"><li class=list-group-item><a href="/blog/post/'+data.pk+'">'+data.fields.title
+                 _html+='<div class="appendData"><div class="postdata'+data.pk+'"><li class=list-group-item><a href="/blog/post/'+data.pk+'">'+data.fields.title
                +'</a>'+'by :'+user_data.fields.username+'  Date:'+data.fields.post_date+'<br/>'+'<p>'+data.fields.body+'</p><br/><br/>'+
                '<a href="#" class="deletebutton btn btn-secondary" id="delete'+data.pk+'" data-postid='+data.pk+'>Delete</a>'+'&nbsp'+
                '<a href="/blog/updatepost/edit/'+data.pk+'" class="btn btn-secondary">Update</a>'+'&nbsp'+

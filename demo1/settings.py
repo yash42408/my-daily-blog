@@ -139,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -200,3 +200,8 @@ EMAIL_HOST_PASSWORD = ''
 AUTH_USER_MODEL ='blog.User'
 
 APPEND_SLASH = False
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR,'locale')
+]
+LANGUAGE_CODE = 'fr'

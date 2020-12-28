@@ -31,14 +31,14 @@ crossorigin="anonymous">
     
   {% endif %}
   {% csrf_token %}
-	<h1>Login Here</h1> 
+	<h1>{% trans "Login Here" %}</h1> 
   <input class="box" type="text" name="login" placeholder="Username" id="id_login" maxlength="150" required autocomplete="username"/>
   <input class="box" type="password" name="password" placeholder="Password" id="id_password" required autocomplete="current-password"/>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-  <a href="{% url 'account_signup' %}"><h3>Signup Here</h3></a>
+  <a href="{% url 'account_signup' %}"><h3>{% trans "Signup Here" %}</h3></a>
 </form>
 </div>
 </div>

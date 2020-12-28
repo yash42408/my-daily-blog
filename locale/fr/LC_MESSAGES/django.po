@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: blog/templates/login.html:5
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-28 18:08+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/templates/addpost.html:15 blog/templates/menu.html:49
+msgid "Add Post"
+msgstr "Ajouter un message"
+
+#: blog/templates/addpost.html:23
+msgid "Submit"
+msgstr "Soumettre"
+
+#: blog/templates/addpost.html:24
+msgid "back"
+msgstr "retour"
+
+#: blog/templates/footer.html:5
+msgid "© 2020 Copyright"
+msgstr "© 2020 Droits d'auteur"
+
+#: blog/templates/home.html:19
+msgid "Most Recent Post"
+msgstr "Message le plus récent"
+
+#: blog/templates/home.html:30 blog/templates/home.html:31
+#: blog/templates/home.html:69 blog/templates/home.html:105
+#: blog/templates/home.html:180
+msgid "Like"
+msgstr "aime"
+
+#: blog/templates/home.html:30 blog/templates/home.html:69
+#: blog/templates/home.html:105
+msgid "Views"
+msgstr "Vues"
+
+#: blog/templates/home.html:38 blog/templates/home.html:75
+#: blog/templates/home.html:112
+msgid "Comment"
+msgstr "Commentaire"
+
+#: blog/templates/home.html:39 blog/templates/home.html:76
+#: blog/templates/home.html:113 blog/templates/mypublishpost.html:27
+msgid "View All Comment"
+msgstr "Afficher tous les commentaires"
+
+#: blog/templates/home.html:59
+msgid "Most Likes Post"
+msgstr "Message le plus apprécié"
+
+#: blog/templates/home.html:94
+msgid "Most Views Post"
+msgstr "La plupart des vues post"
+
+#: blog/templates/menu.html:38
+msgid "My Post"
+msgstr "Mon message"
+
+#: blog/templates/menu.html:41
+msgid "My All Post"
+msgstr "Mon tout message"
+
+#: blog/templates/menu.html:42
+#, fuzzy
+#| msgid "Most Likes Post"
+msgid "My Publish Post"
+msgstr "Message le plus apprécié"
+
+#: blog/templates/menu.html:43
+msgid "My Unpublish Post"
+msgstr "Mon message non publié"
+
+#: blog/templates/menu.html:45
+msgid "My Archive Post"
+msgstr "Mon message d'archive"
+
+#: blog/templates/menu.html:52 blog/templates/menu.html:72
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: blog/templates/menu.html:62 blog/templates/menu.html:82
+msgid "Profile"
+msgstr "Profil"
+
+#: blog/templates/menu.html:63
+msgid "Anthor Action"
+msgstr "Action d'Anthor"
+
+#: blog/templates/menu.html:65 blog/templates/menu.html:84
+msgid "Something else here"
+msgstr "Autre chose ici"
+
+#: blog/templates/menu.html:90 member/templates/account/signup.html:44
+msgid "Sign Up"
+msgstr "s'inscrire"
+
+#: blog/templates/menu.html:93 member/templates/account/login.html:40
+msgid "Sign In"
+msgstr "s'identifier"
+
+#: blog/templates/menu.html:100
+msgid "Search"
+msgstr "Chercher"
+
+#: blog/templates/mypost.html:25 blog/templates/mypublishpost.html:28
+msgid "Delete"
+msgstr "Effacer"
+
+#: blog/templates/mypost.html:26 blog/templates/mypublishpost.html:29
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: blog/templates/mypost.html:27
+#, fuzzy
+msgid "Archive"
+msgstr "Archiver"
+
+#: blog/templates/mypost.html:29
+msgid "Unpublish"
+msgstr "dépublier"
+
+#: blog/templates/mypost.html:31
+msgid "Publish"
+msgstr "Publier"
+
+#: blog/templates/mypost.html:47
+msgid "Load More"
+msgstr "Charger plus"
+
+#: blog/templates/mypublishpost.html:11
+msgid "Post"
+msgstr "Publier"
+
+#: blog/templates/mypublishpost.html:68
+msgid "are you sure you want to remove the item?"
+msgstr "êtes-vous sûr de vouloir supprimer l'élément?"
+
+#: member/templates/account/login.html:34
+msgid "Login Here"
+msgstr "Connectez-vous ici"
+
+#: member/templates/account/login.html:41
+#: member/templates/account/signup.html:33
+msgid "Signup Here"
+msgstr "Connectez-vous ici"
+
+#: member/templates/account/logout.html:4
+#: member/templates/account/logout.html:7
+#: member/templates/account/logout.html:16
+msgid "Sign Out"
+msgstr "Se déconnecter"
+
+#: member/templates/account/logout.html:9
+msgid "Are you sure you want to sign out?"
+msgstr "Êtes-vous certain de vouloir vous déconnecter?"

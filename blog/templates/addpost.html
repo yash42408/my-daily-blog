@@ -1,6 +1,6 @@
 
 {% extends 'menu.html'%}
-
+{% load i18n %}
 {% block title%}
   
     Add New Post
@@ -12,7 +12,7 @@
 {% if user.is_authenticated %}
 
 {% if user.is_blogger %}
-        <h1><i>Add Post</i></h1>
+        <h1><i>{% trans "Add Post" %}</i></h1>
         <br/>
         <div class="w-75 p-3">
         <div class="form-group">
@@ -20,8 +20,8 @@
         {% csrf_token %}
         {{form.media}}
         {{form.as_p}}
-        <button  class="btn btn-secondary">Submit</button>
-        <a href="{% url 'home'%}" class="btn btn-secondary">back</a>
+        <button  class="btn btn-secondary">{% trans "Submit" %}</button>
+        <a href="{% url 'home'%}" class="btn btn-secondary">{% trans "back" %}</a>
         </form>
         </div>
         <script>

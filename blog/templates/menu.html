@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+{% load i18n %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -34,21 +35,21 @@
      {% if user.is_authenticated %}
         {% if user.is_blogger %}
          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MyPost
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "My Post" %}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'mypost' user.id %}">My All Post</a>
-          <a class="dropdown-item" href="{% url 'my-publish-post' %}">My Publish Post</a>
-          <a class="dropdown-item" href="{% url 'my-unpublish-post' %}">My Unpublish Post</a>
+          <a class="dropdown-item" href="{% url 'mypost' user.id %}">{% trans "My All Post" %}</a>
+          <a class="dropdown-item" href="{% url 'my-publish-post' %}">{% trans "My Publish Post" %}</a>
+          <a class="dropdown-item" href="{% url 'my-unpublish-post' %}">{% trans "My Unpublish Post" %}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'my-archive-post' %}">My Archive Post</a>
+          <a class="dropdown-item" href="{% url 'my-archive-post' %}">{% trans "My Archive Post" %}</a>
         </div>
          </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'addpost'%}">Add Post</a>
+          <a class="nav-link" href="{% url 'addpost'%}">{% trans "Add Post" %}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_logout'%}">Logout</a>
+          <a class="nav-link" href="{% url 'account_logout'%}">{% trans "Logout" %}</a>
         </li>
         <li class="nav-item">
         <a class="nav-link disabled" href="#">{{user.username}}</a>
@@ -58,17 +59,17 @@
           
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'userprofile' %}">Profile</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="{% url 'userprofile' %}">{% trans "Profile" %}</a>
+          <a class="dropdown-item" href="#">{% trans "Anthor Action" %}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">{% trans "Something else here" %}</a>
         </div>
       </li>
 
 
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_logout'%}">Logout</a>
+          <a class="nav-link" href="{% url 'account_logout'%}">{% trans "Logout" %}</a>
         </li>
         <li class="nav-item">
         <a class="nav-link disabled" href="#">{{user.username}}</a>
@@ -78,25 +79,25 @@
           
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'userprofile' %}">Profile</a>
+          <a class="dropdown-item" href="{% url 'userprofile' %}">{% trans "Profile" %}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">{% trans "Something else here" %}</a>
         </div>
       </li>
         {% endif %}
      {% else %}
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_signup'%}">register</a>
+        <a class="nav-link" href="{% url 'account_signup'%}">{% trans "Sign Up" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_login'%}">Login</a>
+        <a class="nav-link" href="{% url 'account_login'%}">{% trans "Sign In" %}</a>
       </li>
      {% endif %}
     </ul>
     <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'search-by-title' %}">
        {% csrf_token %}
       <input class="form-control mr-sm-2" type="search" placeholder="Search By Title" name="title" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
     </form>
   </div>
 </nav>

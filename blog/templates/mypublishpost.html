@@ -1,6 +1,6 @@
 
 {% extends 'menu.html'%}
-
+{% load i18n %}
 {% block title%}
     Greeting of the day!
 {% endblock%}
@@ -8,7 +8,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 {% if user.is_blogger %}
-<h1>Post</h1>
+<h1>{% trans "Post" %}</h1>
 <hr>
 <br/>
 <ul class="list-group">
@@ -24,9 +24,9 @@
  <br/>
  
  
- <a href={% url 'articledetail' post.pk %} class="btn btn-secondary">View Comment</a>
-<a href="#" class="deletebutton btn btn-secondary" id="delete{{post.pk}}" data-postid="{{post.pk}}">Delete</a>
- <a href={% url 'update_post' post.pk %} class="btn btn-secondary">Update</a>
+ <a href={% url 'articledetail' post.pk %} class="btn btn-secondary">{% trans "View All Comment" %}</a>
+<a href="#" class="deletebutton btn btn-secondary" id="delete{{post.pk}}" data-postid="{{post.pk}}">{% trans "Delete" %}</a>
+ <a href={% url 'update_post' post.pk %} class="btn btn-secondary">{% trans "Update" %}</a>
 
 </li>
 </div>
@@ -65,7 +65,7 @@
 <script type="text/javascript">
 
    $(document).on('click','.deletebutton',function(e){
-    let confirmation = confirm("are you sure you want to remove the item?");
+    let confirmation = confirm("{% trans 'are you sure you want to remove the item?' %}");
     e.preventDefault();
     var postid;
     postid = $(this).attr("data-postid");  
