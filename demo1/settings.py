@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+
 ]
 
 ROOT_URLCONF = 'demo1.urls'
@@ -204,4 +207,10 @@ APPEND_SLASH = False
 LOCALE_PATHS = [
     os.path.join(BASE_DIR,'locale')
 ]
-LANGUAGE_CODE = 'fr'
+# LANGUAGE_CODE = 'fr'
+
+LANGUAGES = [
+  ('en', _('English')),
+  ('fr', _('french')),
+  
+]

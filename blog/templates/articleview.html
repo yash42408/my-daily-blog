@@ -1,4 +1,5 @@
- {% extends 'menu.html'%}
+{% extends 'menu.html'%}
+{% load i18n %}
 {% block title%}
 
     
@@ -10,23 +11,23 @@
 {% if user.is_blogger and user.id == post.blogger.id%}
 
 <h1>{{ post.title }}</h1>
-<bold>By: {{post.blogger}}
+<bold>{% trans "By" %}: {{post.blogger}}
  {{post.author.last_name}} .{{post.post_date}} .<br/> </bold>
 <hr>
 <br/>
 {{post.body |safe}}
 <br/>
 <br/>
-<h2>Comments...</h2>
+<h2>{% trans "Comments" %}:</h2>
 {% if not post.comments.all %}
-No Comment Yet...
+{% trans "No Comment Yet..." %}
 {% else %}
 
 {% for comment in post.comments.all %}
 
 <li id="comment{{comment.id}}">
 {{comment.comment_content}}--by:-{{comment.user}}--Date : {{comment.comment_date}} <br/>
- <a href="#" class="remove_comment btn btn-secondary" data-commentId="{{comment.id}}">Delete</a>
+ <a href="#" class="remove_comment btn btn-secondary" data-commentId="{{comment.id}}">{% trans "Delete" %}</a>
 
 </li>
 {% endfor %}
@@ -40,7 +41,7 @@ No Comment Yet...
 {{post.body |safe}}
 <br/>
 <br/>
-<h2>Comments...</h2>
+<h2>{% trans "Comments" %}:</h2>
 {% if not post.comments.all %}
 No Comment Yet...
 {% else %}
@@ -54,7 +55,7 @@ No Comment Yet...
 {% endfor %}
 {% endif %}
 {% endif %}
-   <a href="{% url 'home'%}" class="btn btn-secondary">back</a>
+   <a href="{% url 'home'%}" class="btn btn-secondary">{% trans "back" %}</a>
 {% else %}
 <h1>You're Not Allowed Here</h1>
 {% endif %}
@@ -64,7 +65,7 @@ No Comment Yet...
 <script type="text/javascript">
 
    $(document).on('click','.remove_comment',function(e){
-    let confirmation = confirm("are you sure you want to remove the item?");
+    let confirmation = confirm("{% trans 'are you sure you want to remove the item?' %}");
     e.preventDefault();
     var commentId;
     commentId = $(this).attr("data-commentId");  

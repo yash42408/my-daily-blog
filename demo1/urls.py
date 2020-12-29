@@ -28,6 +28,8 @@ urlpatterns = [
     path('member/',include('member.urls')),
     # path('api/',include('api.urls')),
     path('api1/',include('api1.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+
 ]
 
 if settings.DEBUG:

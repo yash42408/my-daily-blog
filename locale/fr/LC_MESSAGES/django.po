@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 18:08+0530\n"
+"POT-Creation-Date: 2020-12-29 14:24+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,9 +27,34 @@ msgstr "Ajouter un message"
 msgid "Submit"
 msgstr "Soumettre"
 
-#: blog/templates/addpost.html:24
+#: blog/templates/addpost.html:24 blog/templates/articleview.html:58
 msgid "back"
 msgstr "retour"
+
+#: blog/templates/articleview.html:14 blog/templates/home.html:27
+#: blog/templates/home.html:102 blog/templates/home.html:177
+#: blog/templates/home.html:250 blog/templates/home.html:321
+#: blog/templates/home.html:425 blog/templates/home.html:525
+#: blog/templates/home.html:630
+msgid "By"
+msgstr "Par"
+
+#: blog/templates/articleview.html:21 blog/templates/articleview.html:44
+msgid "Comments"
+msgstr "Commentaires"
+
+#: blog/templates/articleview.html:23
+msgid "No Comment Yet..."
+msgstr "Aucun commentaire pour l'instant"
+
+#: blog/templates/articleview.html:30 blog/templates/mypost.html:25
+#: blog/templates/mypublishpost.html:28
+msgid "Delete"
+msgstr "Effacer"
+
+#: blog/templates/articleview.html:68 blog/templates/mypublishpost.html:68
+msgid "are you sure you want to remove the item?"
+msgstr "êtes-vous sûr de vouloir supprimer l'élément?"
 
 #: blog/templates/footer.html:5
 msgid "© 2020 Copyright"
@@ -39,24 +64,53 @@ msgstr "© 2020 Droits d'auteur"
 msgid "Most Recent Post"
 msgstr "Message le plus récent"
 
+#: blog/templates/home.html:29 blog/templates/home.html:68
+#: blog/templates/home.html:104 blog/templates/home.html:179
+#: blog/templates/home.html:252 blog/templates/home.html:323
+#: blog/templates/home.html:429 blog/templates/home.html:527
+#: blog/templates/home.html:634
+msgid "Continue..."
+msgstr "Continuer..."
+
 #: blog/templates/home.html:30 blog/templates/home.html:31
 #: blog/templates/home.html:69 blog/templates/home.html:105
-#: blog/templates/home.html:180
+#: blog/templates/home.html:180 blog/templates/home.html:253
+#: blog/templates/home.html:324 blog/templates/home.html:431
+#: blog/templates/home.html:528 blog/templates/home.html:636
 msgid "Like"
 msgstr "aime"
 
 #: blog/templates/home.html:30 blog/templates/home.html:69
-#: blog/templates/home.html:105
-msgid "Views"
+#: blog/templates/home.html:105 blog/templates/home.html:180
+#: blog/templates/home.html:253 blog/templates/home.html:324
+#: blog/templates/home.html:431 blog/templates/home.html:528
+#: blog/templates/home.html:636
+msgid "View"
 msgstr "Vues"
 
+#: blog/templates/home.html:37 blog/templates/home.html:74
+#: blog/templates/home.html:111 blog/templates/home.html:185
+#: blog/templates/home.html:258 blog/templates/home.html:329
+#: blog/templates/home.html:441 blog/templates/home.html:533
+#: blog/templates/home.html:646
+#, fuzzy
+#| msgid "Comment"
+msgid "Comment..."
+msgstr "Commentaire"
+
 #: blog/templates/home.html:38 blog/templates/home.html:75
-#: blog/templates/home.html:112
+#: blog/templates/home.html:112 blog/templates/home.html:186
+#: blog/templates/home.html:259 blog/templates/home.html:330
+#: blog/templates/home.html:443 blog/templates/home.html:534
+#: blog/templates/home.html:648
 msgid "Comment"
 msgstr "Commentaire"
 
 #: blog/templates/home.html:39 blog/templates/home.html:76
-#: blog/templates/home.html:113 blog/templates/mypublishpost.html:27
+#: blog/templates/home.html:113 blog/templates/home.html:188
+#: blog/templates/home.html:261 blog/templates/home.html:332
+#: blog/templates/home.html:447 blog/templates/home.html:536
+#: blog/templates/home.html:652 blog/templates/mypublishpost.html:27
 msgid "View All Comment"
 msgstr "Afficher tous les commentaires"
 
@@ -106,21 +160,17 @@ msgstr "Action d'Anthor"
 msgid "Something else here"
 msgstr "Autre chose ici"
 
-#: blog/templates/menu.html:90 member/templates/account/signup.html:44
+#: blog/templates/menu.html:91 member/templates/account/signup.html:44
 msgid "Sign Up"
 msgstr "s'inscrire"
 
-#: blog/templates/menu.html:93 member/templates/account/login.html:40
+#: blog/templates/menu.html:94 member/templates/account/login.html:40
 msgid "Sign In"
 msgstr "s'identifier"
 
-#: blog/templates/menu.html:100
+#: blog/templates/menu.html:101
 msgid "Search"
 msgstr "Chercher"
-
-#: blog/templates/mypost.html:25 blog/templates/mypublishpost.html:28
-msgid "Delete"
-msgstr "Effacer"
 
 #: blog/templates/mypost.html:26 blog/templates/mypublishpost.html:29
 msgid "Update"
@@ -147,9 +197,40 @@ msgstr "Charger plus"
 msgid "Post"
 msgstr "Publier"
 
-#: blog/templates/mypublishpost.html:68
-msgid "are you sure you want to remove the item?"
-msgstr "êtes-vous sûr de vouloir supprimer l'élément?"
+#: blog/templates/userprofile.html:5
+msgid "My Profile"
+msgstr "Mon profil"
+
+#: blog/templates/userprofile.html:6
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: blog/templates/userprofile.html:9 blog/templates/userprofile.html:15
+#: blog/templates/userprofile.html:18
+msgid "Request For Blogger"
+msgstr "Demande pour Blogger"
+
+#: blog/templates/userprofile.html:9
+msgid "Approved"
+msgstr "Approuvée"
+
+#: blog/templates/userprofile.html:15
+msgid "Request"
+msgstr "Demande"
+
+#: blog/templates/userprofile.html:18
+msgid "Sent"
+msgstr "Expédié"
+
+#: demo1/settings.py:213
+#, fuzzy
+#| msgid "Unpublish"
+msgid "English"
+msgstr "dépublier"
+
+#: demo1/settings.py:214
+msgid "french"
+msgstr ""
 
 #: member/templates/account/login.html:34
 msgid "Login Here"

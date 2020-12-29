@@ -23,17 +23,17 @@
       <div class="card-body">
       <div class="card-header">
         <a href="{% url 'articledetail' recent_post.id %}"><h5 class="card-title"><i>{{recent_post.title}}</i></h5></a>
-        By:{{recent_post.blogger}}-Date : {{recent_post.post_date|date:'d-m-Y'}}
+        {% trans "By" %}:{{recent_post.blogger}}-Date : {{recent_post.post_date|date:'d-m-Y'}}
       </div>
-        <p class="card-text">{{recent_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' recent_post.id %}" > continue...</a></p>
-        <b class="output{{recent_post.id}}">{{recent_post.total_likes}}</b> {% trans "Like" %} -- <b>{{recent_post.post_view}}</b> {% trans "Views" %}&nbsp
+        <p class="card-text">{{recent_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' recent_post.id %}" >{% trans "Continue..." %}</a></p>
+        <b class="output{{recent_post.id}}">{{recent_post.total_likes}}</b> {% trans "Like" %} -- <b>{{recent_post.post_view}}</b> {% trans "View" %}&nbsp
         <a href="#" class="likebutton btn btn-primary" data-catid="{{recent_post.id}}">&nbsp {% trans "Like" %}</a>
         <br/>
 
         <div class="card-footer bg-transparent">
         <form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{recent_post.id}}" >
          {% csrf_token %}
-         <input class="form-control transparent-input"  id="content{{recent_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <input class="form-control transparent-input"  id="content{{recent_post.id}}" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp  
           <a href="{% url 'articledetail' recent_post.id %}" class="btn btn-secondary">{% trans "View All Comment" %}</a>    
         </form>
@@ -64,13 +64,13 @@
         <div class="card-header">
         <a href="{% url 'articledetail' like_post.id %}"><h5 class="card-title"><i>{{like_post.title}}</i></h5></a>
         </div>
-          <p class="card-text">{{like_post.body|safe|truncatewords:"25"}} <a href="#" > continue...</a></p>
-          <b class="output{{like_post.id}}">{{like_post.total_likes}}</b> {% trans "Like" %} -- <b>{{like_post.post_view}}</b> {% trans "Views" %}&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{like_post.id}}">&nbsp {% trans "Like" %}</a>
+          <p class="card-text">{{like_post.body|safe|truncatewords:"25"}} <a href="#" >{% trans "Continue..." %}</a></p>
+          <b class="output{{like_post.id}}">{{like_post.total_likes}}</b> {% trans "Like" %} -- <b>{{like_post.post_view}}</b> {% trans "View" %}&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{like_post.id}}">&nbsp {% trans "Like" %}</a>
         <br>
       <div class="card-footer bg-transparent">
         <form class="commentform1 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{like_post.id}}" >
          {% csrf_token %}
-         <input class="form-control transparent-input" id="content1{{like_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <input class="form-control transparent-input" id="content1{{like_post.id}}" type="search" placeholder={% trans "Comment..." %} name="title" aria-label="Search">
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp  
           <a href="{% url 'articledetail' like_post.id %}" class="btn btn-secondary">{% trans "View All Comment" %}</a>    
         </form>
@@ -98,16 +98,16 @@
       <div class="card-body">
       <div class="card-header">
         <a href="{% url 'articledetail' view_post.id %}"><h5 class="card-title"><i>{{view_post.title}}</i></h5></a>
-        By:{{view_post.blogger}}-Date : {{view_post.post_date|date:'d-m-Y'}}
+        {% trans "By" %}:{{view_post.blogger}}-Date : {{view_post.post_date|date:'d-m-Y'}}
       </div>
-        <p class="card-text">{{view_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' view_post.id %}" > continue...</a></p>
-        <b class="output{{view_post.id}}">{{view_post.total_likes}}</b> {% trans "Like" %} -- <b>{{view_post.post_view}}</b> {% trans "Views" %}&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{view_post.id}}">&nbsp {% trans "Like" %}</a>
+        <p class="card-text">{{view_post.body|safe|truncatewords:"25"}} <a href="{% url 'articledetail' view_post.id %}" > {% trans "Continue..." %}</a></p>
+        <b class="output{{view_post.id}}">{{view_post.total_likes}}</b> {% trans "Like" %} -- <b>{{view_post.post_view}}</b> {% trans "View" %}&nbsp<a href="#" class="likebutton btn btn-primary" data-catid="{{view_post.id}}">&nbsp {% trans "Like" %}</a>
         <br/>
 
         <div class="card-footer bg-transparent">
         <form class="commentform2 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="{{view_post.id}}" >
          {% csrf_token %}
-         <input class="form-control transparent-input"  id="content2{{view_post.id}}" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">
+         <input class="form-control transparent-input"  id="content2{{view_post.id}}" type="search" placeholder={% trans "Comment..." %} name="title" aria-label="Search">
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp  
           <a href="{% url 'articledetail' view_post.id %}" class="btn btn-secondary">{% trans "View All Comment" %}</a>    
         </form>
@@ -170,18 +170,18 @@ $(document).ready(function(){
               '<div class="card border mb-3">'+
               '<div class="card-body">'+
                '<div class="card-header">'+
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %}:'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
                '</div>'+
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> '+'{% trans "Like" %}'+'-- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" >{% trans "Continue..." %}</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> '+'{% trans "Like" %}'+'-- <b>'+data.fields.post_view+'</b>'+'{% trans "View" %}'+'<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
                ' <br>'+
                '<div class="card-footer bg-transparent">'+
               '<form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
               ' {% csrf_token %}'+
-              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">'+'{% trans "Comment" %}'+'</button>&nbsp&nbsp '+
 
-              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
               ' </form>'+
               '</div>'+
               '</div>'+
@@ -243,18 +243,18 @@ $(document).ready(function(){
               '<div class="card border mb-3">'+
               '<div class="card-body">'+
                '<div class="card-header">'+
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %}:'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
                '</div>'+
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" >{% trans "Continue..." %}</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> {% trans "Like" %} -- <b>'+data.fields.post_view+'</b> {% trans "View" %}<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
                ' <br>'+
                '<div class="card-footer bg-transparent">'+
               '<form class="commentform form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
               ' {% csrf_token %}'+
-              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp '+
 
-              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="#" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
               ' </form>'+
               '</div>'+
               '</div>'+
@@ -313,18 +313,18 @@ $(document).ready(function(){
               '<div class="card border mb-3">'+
               '<div class="card-body">'+
                '<div class="card-header">'+
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %} :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
                '</div>'+
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" >{% trans "Continue..." %}</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b>{% trans "Like" %} -- <b>'+data.fields.post_view+'</b>{% trans "View" %}<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
                ' <br>'+
                '<div class="card-footer bg-transparent">'+
               '<form class="commentform1 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
               ' {% csrf_token %}'+
-              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp '+
 
-              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="#" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
               ' </form>'+
               '</div>'+
               '</div>'+
@@ -416,13 +416,13 @@ $(document).ready(function(){
 
                '<div class="card-header">'+
 
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %}:'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
 
                '</div>'+
 
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" >{% trans "Continue..." %}</a></p>'+
 
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> {% trans "Like" %} -- <b>'+data.fields.post_view+'</b>{% trans "View" %}<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
 
                ' <br>'+
 
@@ -432,13 +432,13 @@ $(document).ready(function(){
 
               ' {% csrf_token %}'+
 
-              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              '<input class="form-control transparent-input" id="content1'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
 
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp '+
 
 
 
-              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="/blog/post/'+data.pk+'" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
 
               ' </form>'+
 
@@ -515,18 +515,18 @@ $(document).ready(function(){
               '<div class="card border mb-3">'+
               '<div class="card-body">'+
                '<div class="card-header">'+
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %}:'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
                '</div>'+
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" >{% trans "Continue..." %}</a></p>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> {% trans "Like" %} -- <b>'+data.fields.post_view+'</b> {% trans "View" %}<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
                ' <br>'+
                '<div class="card-footer bg-transparent">'+
               '<form class="commentform2 form-inline my-2 my-lg-0" method="POST" action="#" data-postid="'+data.pk+'" >'+
               ' {% csrf_token %}'+
-              '<input class="form-control transparent-input" id="content2'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              '<input class="form-control transparent-input" id="content2'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp '+
 
-              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="#" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
               ' </form>'+
               '</div>'+
               '</div>'+
@@ -619,13 +619,13 @@ $(document).ready(function(){
 
                '<div class="card-header">'+
 
-               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'By :'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
+               ' <a href="/blog/post/'+data.pk+'"><h5 class="card-title"><i>'+data.fields.title+'</i></h5></a>'+'{% trans "By" %}:'+user_data.fields.username+' Date: '+data.fields.post_date.split("-").reverse().join("-")+
 
                '</div>'+
 
-                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > continue...</a></p>'+
+                '<p class="card-text">'+data.fields.body.slice(0,200)+' <a href="/blog/post/'+data.pk+'" > {% trans "Continue..." %}</a></p>'+
 
-               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> Likes -- <b>'+data.fields.post_view+'</b> Views<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">Like</a>'+
+               ' <b class="output'+data.pk+'">'+data.fields.likes.length+'</b> {% trans "Like" %} -- <b>'+data.fields.post_view+'</b> {% trans "View" %}<a href="#" class="likebutton btn btn-primary" data-catid="'+data.pk+'">{% trans "Like" %}</a>'+
 
                ' <br>'+
 
@@ -635,13 +635,13 @@ $(document).ready(function(){
 
               ' {% csrf_token %}'+
 
-              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="Typing Comment...." name="title" aria-label="Search">'+
+              '<input class="form-control transparent-input" id="content'+data.pk+'" type="search" placeholder="{% trans "Comment..." %}" name="title" aria-label="Search">'+
 
-              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>&nbsp&nbsp '+
+              ' <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{% trans "Comment" %}</button>&nbsp&nbsp '+
 
 
 
-              ' <a href="#" class="btn btn-secondary">View All Comment</a>  '+  
+              ' <a href="#" class="btn btn-secondary">{% trans "View All Comment" %}</a>  '+  
 
               ' </form>'+
 
