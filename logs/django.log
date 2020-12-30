@@ -1,0 +1,14 @@
+2020-12-30 10:19:00,198 django       INFO     ssssssssssss
+2020-12-30 10:19:00,234 django       INFO     ssssssssssss
+2020-12-30 10:19:00,261 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
+2020-12-30 10:19:00,295 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
+2020-12-30 10:19:00,315 django       INFO     ssssssssssss
+2020-12-30 10:19:00,325 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
+2020-12-30 10:19:00,463 django       INFO     ssssssssssss
+2020-12-30 10:19:00,474 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
+2020-12-30 10:19:00,734 django       INFO     ssssssssssss
+2020-12-30 10:19:00,780 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
+2020-12-30 10:25:36,063 django.utils.autoreload INFO     /home/yash/Desktop/newenv/demo1/demo1/settings.py changed, reloading.
+2020-12-30 10:25:36,636 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2020-12-30 10:26:20,147 django.utils.autoreload INFO     /home/yash/Desktop/newenv/demo1/blog/views.py changed, reloading.
+2020-12-30 10:26:20,723 django.utils.autoreload INFO     Watching for file changes with StatReloader

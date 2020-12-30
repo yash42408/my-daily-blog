@@ -12,7 +12,10 @@ from django.db.models import Count
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import logging
 
+# Get an instance of a logger
+logger = logging.getLogger('django')
 
 # Create your views here.
 
@@ -60,6 +63,7 @@ class ArticleDetailsView(DetailView):
         obj = super().get_object()
         obj.post_view += 1
         obj.save()
+        logger.info('ssssssssssss')
         return obj
     template_name = 'articleview.html'
 
