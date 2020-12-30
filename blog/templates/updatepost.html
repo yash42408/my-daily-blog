@@ -1,5 +1,6 @@
 
 {% extends 'menu.html'%}
+{% load i18n %}
 
 {% block title%}
   
@@ -9,7 +10,7 @@
 
 {% if user.is_authenticated and user.is_blogger%}
      {% if user.id == post.blogger.id %}
-            <h1>Update Post</h1>
+            <h1>{% trans "Update Post" %}</h1>
             <br/>
 
             <div class="w-75 p-3">
@@ -18,8 +19,8 @@
             {% csrf_token %}
             {{form.media}}
             {{form.as_p}}
-            <button  class="btn btn-secondary">Update</button>
-            <a href="{% url 'mypost' user.id%}" class="btn btn-secondary">back</a>
+            <button  class="btn btn-secondary">{% trans "Update" %}</button>
+            <a href="{% url 'mypost' user.id%}" class="btn btn-secondary">{% trans "back" %}</a>
             </form>
             </div>
             </div>

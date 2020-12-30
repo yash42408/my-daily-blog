@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 14:24+0530\n"
+"POT-Creation-Date: 2020-12-29 17:34+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: blog/forms.py:13
+msgid "title"
+msgstr "Titre"
+
+#: blog/forms.py:14
+msgid "title tag"
+msgstr "balise de titre"
+
+#: blog/forms.py:15
+msgid "blogger"
+msgstr "blogueur"
+
+#: blog/forms.py:16
+msgid "body"
+msgstr "corps"
+
+#: blog/forms.py:17
+msgid "status"
+msgstr "statut"
+
 #: blog/templates/addpost.html:15 blog/templates/menu.html:49
 msgid "Add Post"
 msgstr "Ajouter un message"
@@ -27,11 +47,16 @@ msgstr "Ajouter un message"
 msgid "Submit"
 msgstr "Soumettre"
 
-#: blog/templates/addpost.html:24 blog/templates/articleview.html:58
+#: blog/templates/addpost.html:24 blog/templates/articleview.html:57
+#: blog/templates/updatepost.html:23
 msgid "back"
 msgstr "retour"
 
-#: blog/templates/articleview.html:14 blog/templates/home.html:27
+#: blog/templates/articleview.html:5 blog/templates/home.html:4
+msgid "  Greeting of the day!"
+msgstr "Salutations du jour!"
+
+#: blog/templates/articleview.html:13 blog/templates/home.html:27
 #: blog/templates/home.html:102 blog/templates/home.html:177
 #: blog/templates/home.html:250 blog/templates/home.html:321
 #: blog/templates/home.html:425 blog/templates/home.html:525
@@ -39,20 +64,20 @@ msgstr "retour"
 msgid "By"
 msgstr "Par"
 
-#: blog/templates/articleview.html:21 blog/templates/articleview.html:44
+#: blog/templates/articleview.html:20 blog/templates/articleview.html:43
 msgid "Comments"
 msgstr "Commentaires"
 
-#: blog/templates/articleview.html:23
+#: blog/templates/articleview.html:22
 msgid "No Comment Yet..."
 msgstr "Aucun commentaire pour l'instant"
 
-#: blog/templates/articleview.html:30 blog/templates/mypost.html:25
+#: blog/templates/articleview.html:29 blog/templates/mypost.html:25
 #: blog/templates/mypublishpost.html:28
 msgid "Delete"
 msgstr "Effacer"
 
-#: blog/templates/articleview.html:68 blog/templates/mypublishpost.html:68
+#: blog/templates/articleview.html:67 blog/templates/mypublishpost.html:68
 msgid "are you sure you want to remove the item?"
 msgstr "êtes-vous sûr de vouloir supprimer l'élément?"
 
@@ -173,6 +198,7 @@ msgid "Search"
 msgstr "Chercher"
 
 #: blog/templates/mypost.html:26 blog/templates/mypublishpost.html:29
+#: blog/templates/updatepost.html:22
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -196,6 +222,10 @@ msgstr "Charger plus"
 #: blog/templates/mypublishpost.html:11
 msgid "Post"
 msgstr "Publier"
+
+#: blog/templates/updatepost.html:13
+msgid "Update Post"
+msgstr "mettre à jour le message"
 
 #: blog/templates/userprofile.html:5
 msgid "My Profile"
