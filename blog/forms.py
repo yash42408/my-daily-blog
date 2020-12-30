@@ -1,6 +1,7 @@
 from django import forms
 from .models import Post,Comment
 from ckeditor.widgets import CKEditorWidget
+from django.utils.translation import ugettext_lazy
 
 
 class PostForms(forms.ModelForm):
@@ -8,7 +9,13 @@ class PostForms(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title','title_tag','blogger','body','status')
-
+        labels ={
+            'title':ugettext_lazy('title'),
+            'title_tag':ugettext_lazy('title tag'),
+            'blogger':ugettext_lazy('blogger'),
+            'body':ugettext_lazy('body'),
+            'status':ugettext_lazy('status')
+        }
         widgets = {
 
             'title':forms.TextInput(attrs={'class':'form-control'}),
