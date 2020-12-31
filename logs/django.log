@@ -1,14 +1,59 @@
-2020-12-30 10:19:00,198 django       INFO     ssssssssssss
-2020-12-30 10:19:00,234 django       INFO     ssssssssssss
-2020-12-30 10:19:00,261 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
-2020-12-30 10:19:00,295 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
-2020-12-30 10:19:00,315 django       INFO     ssssssssssss
-2020-12-30 10:19:00,325 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
-2020-12-30 10:19:00,463 django       INFO     ssssssssssss
-2020-12-30 10:19:00,474 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
-2020-12-30 10:19:00,734 django       INFO     ssssssssssss
-2020-12-30 10:19:00,780 django.server INFO     "GET /blog/post/1517 HTTP/1.1" 200 5784
-2020-12-30 10:25:36,063 django.utils.autoreload INFO     /home/yash/Desktop/newenv/demo1/demo1/settings.py changed, reloading.
-2020-12-30 10:25:36,636 django.utils.autoreload INFO     Watching for file changes with StatReloader
-2020-12-30 10:26:20,147 django.utils.autoreload INFO     /home/yash/Desktop/newenv/demo1/blog/views.py changed, reloading.
-2020-12-30 10:26:20,723 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2020-12-31 10:38:34,245 django.server WARNING  "GET /blog/deletepost/delete?post_id=1900 HTTP/1.1" 404 1771
+2020-12-31 10:38:34,462 django.server WARNING  "GET /blog/deletepost/delete?post_id=1900 HTTP/1.1" 404 1771
+2020-12-31 10:39:05,520 django.server WARNING  "GET /blog/deletepost/delete/post_id=1900 HTTP/1.1" 404 6999
+2020-12-31 10:39:11,565 django.server WARNING  "GET /blog/deletepost/delete?post_id=1900 HTTP/1.1" 404 1771
+2020-12-31 10:39:46,746 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:47,316 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:47,670 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:48,439 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:48,694 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:48,934 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:49,336 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:49,777 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:50,095 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:51,056 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:51,430 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:51,893 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:52,824 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:53,463 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:54,061 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:54,504 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:55,044 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:55,536 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:56,049 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:56,542 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:57,046 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:57,524 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:58,032 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:58,569 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:59,032 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:39:59,613 django.server WARNING  "GET /blog/deletepost/delete?post_id=1539 HTTP/1.1" 404 1771
+2020-12-31 10:40:07,264 django.server INFO     "GET /member/accounts/logout/ HTTP/1.1" 200 5212
+2020-12-31 10:40:09,221 django.server INFO     "POST /member/accounts/logout/ HTTP/1.1" 302 0
+2020-12-31 10:40:09,367 django.server INFO     "GET / HTTP/1.1" 200 29723
+2020-12-31 10:40:13,705 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4682
+2020-12-31 10:41:20,998 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4687
+2020-12-31 10:41:22,543 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4687
+2020-12-31 10:41:43,148 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:41:43,311 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:41:43,509 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:41:43,636 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:41:43,897 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:41:50,100 django.server INFO     "GET /blog/home/ HTTP/1.1" 200 29723
+2020-12-31 10:41:51,282 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4701
+2020-12-31 10:42:22,054 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4682
+2020-12-31 10:42:22,665 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4682
+2020-12-31 10:42:22,787 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4682
+2020-12-31 10:42:22,972 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4682
+2020-12-31 10:43:31,310 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4268
+2020-12-31 10:44:21,581 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:22,373 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:22,660 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:23,002 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:23,185 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:23,761 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4646
+2020-12-31 10:44:48,091 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4346
+2020-12-31 10:44:48,660 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4346
+2020-12-31 10:44:48,857 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4346
+2020-12-31 10:45:12,817 django.server INFO     "GET /member/accounts/signup/ HTTP/1.1" 200 5193
+2020-12-31 10:45:21,666 django.server INFO     "GET /member/accounts/login/ HTTP/1.1" 200 4346

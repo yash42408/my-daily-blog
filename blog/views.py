@@ -13,6 +13,7 @@ from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import logging
+from django.core.exceptions import ObjectDoesNotExist
 
 # Get an instance of a logger
 logger = logging.getLogger('django')
@@ -100,10 +101,14 @@ class AddCommentView(View):
                 postid=request.POST.get('post_id')
                 userid=request.POST.get('user_id')
                 content=request.POST.get('content')
-                post = Post.objects.get(id=postid)
-                user = User.objects.get(id=userid)
-                comment = Comment.objects.create(comment_content=content,post=post,user=user)
-                comment.save()
+                try :
+                    post = Post.objects.get(id=postid)
+                    user = User.objects.get(id=userid)
+                    comment = Comment.objects.create(comment_content=content,post=post,user=user)
+                    comment.save()
+                    logger.info("Comment added successfully")
+                except Exception:
+                    logger.error('Something wrong in model')
                 # send_mail(
                 #       'Comment From %s' % (request.user),
                 #       '''Dear %s,
@@ -144,14 +149,15 @@ class UpdatePostView(UpdateView):
 #     return render(request,"deletepost.html",context)
 
 class DeletePostView(View):
+    
     def get(self,request):
         post = get_object_or_404(Post,pk=request.GET['post_id'])
         post.delete()
-        new_posts = Post.objects.filter(is_archive=False)
-        json_new_post = serializers.serialize('json',new_posts)
+        # new_posts = Post.objects.filter(is_archive=False)
+        # json_new_post = serializers.serialize('json',new_posts)
         return JsonResponse(data={
             'success':'success',
-            'posts':json_new_post
+            # 'posts':json_new_post
         })
 
 # show particular user post
